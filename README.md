@@ -43,8 +43,10 @@ También puedes conectar este repositorio desde Workers Builds en Cloudflare:
 
 - Instalación: `npm ci`.
 - Compilación: `npm run build:worker`.
-- Despliegue: `npx opennextjs-cloudflare deploy`.
+- Despliegue: `npm run deploy:worker`.
 - Versión de Node.js: 22.
+
+Si aparece `Could not find compiled Open Next config`, revisa el comando de compilación en Workers Builds: debe ser `npm run build:worker`. `npm run build` compila solo Next.js y no genera `.open-next/worker.js` ni la configuración compilada que requiere el despliegue. Guarda el cambio y vuelve a ejecutar la compilación en Cloudflare. `npm run deploy:worker` usa el resultado ya compilado; `npm run deploy` compila y despliega en un único paso desde tu equipo.
 
 Configura `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_WHATSAPP` y `NEXT_PUBLIC_AGENDA_URL` en el entorno de compilación de Cloudflare. Son datos públicos incorporados al sitio; nunca uses variables `NEXT_PUBLIC_*` para secretos. Los futuros secretos de servidor deben guardarse en Cloudflare mediante su panel o `wrangler secret put`, nunca en el repositorio.
 
