@@ -34,6 +34,7 @@ El proyecto utiliza el adaptador OpenNext y Wrangler. `wrangler.jsonc` contiene 
 ```sh
 npm run typecheck
 npm run build:worker
+npm run test:worker
 npm run preview
 ```
 
@@ -61,3 +62,7 @@ Configura los canales reales de Elsa para habilitar WhatsApp y la agenda. Los te
 ## Git
 
 El remoto `origin` apunta a `https://github.com/DeivyPereira/kindercripto.git`. Añadir el remoto no publica archivos: revisa `git status` antes de crear commits o realizar un push.
+
+## Compatibilidad del Worker
+
+Next.js está fijado en `16.3.8`. Con Next.js `16.4.0` y OpenNext `1.20.10` se reprodujo una excepción al cargar `preview-props.json`, que produce HTTP 500 / error 1101 aunque la compilación termine bien. No amplíes el rango de Next.js sin ejecutar `npm run test:worker` después de `npm run build:worker`. Esta comprobación arranca el Worker local y verifica la página principal, robots, sitemap, imagen social y una imagen del catálogo con respuestas HTTP 200.
