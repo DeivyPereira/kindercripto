@@ -1,0 +1,1317 @@
+<!DOCTYPE html><html lang="es" class="scroll-smooth"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KinderCripto | Elsa Maneiro — Mentora Cripto para Principiantes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              fuchsia: '#E5007D',
+              'fuchsia-dark': '#C60068',
+              'fuchsia-light': '#FFF0F7',
+              'fuchsia-glow': '#FF2A9D',
+              gold: '#D4AF37',
+              'gold-light': '#F5D76E',
+              'gold-subtle': '#FFFDF5',
+              dark: '#111018',
+              'dark-card': '#191824',
+              muted: '#71717A',
+              border: '#EAE8ED',
+            }
+          },
+          boxShadow: {
+            'glow-fuchsia': '0 10px 30px -5px rgba(229, 0, 125, 0.25)',
+            'glow-gold': '0 10px 30px -5px rgba(212, 175, 55, 0.25)',
+            'card-soft': '0 12px 36px -4px rgba(17, 16, 24, 0.05)',
+            'card-hover': '0 20px 40px -8px rgba(229, 0, 125, 0.12)',
+            'modal': '0 25px 60px -15px rgba(0, 0, 0, 0.35)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .gradient-text-hero {
+      background: linear-gradient(135deg, #E5007D 15%, #F5D76E 85%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gradient-border-gold {
+      border-image: linear-gradient(to right, #E5007D, #D4AF37) 1;
+    }
+    .badge-shimmer {
+      background: linear-gradient(90deg, rgba(229,0,125,0.08) 0%, rgba(212,175,55,0.15) 50%, rgba(229,0,125,0.08) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 4s infinite linear;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .floating-card-anim {
+      animation: gentleFloat 5s ease-in-out infinite;
+    }
+    .floating-card-anim-delayed {
+      animation: gentleFloat 5.8s ease-in-out infinite 1.5s;
+    }
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    /* Custom scrollbar for modal */
+    .modal-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .modal-scroll::-webkit-scrollbar-track {
+      background: #F4F4F6;
+      border-radius: 8px;
+    }
+    .modal-scroll::-webkit-scrollbar-thumb {
+      background: #D4AF37;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF9FC] text-[#111018] font-sans antialiased selection:bg-brand-fuchsia selection:text-white">
+
+  <!-- ==========================================
+       SECCIÓN 1: HEADER (Sticky, Minimalista)
+       ========================================== -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-brand-border transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logotipo Brand -->
+      <a href="#inicio" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-brand-dark border border-brand-gold/40 flex items-center justify-center shadow-sm group-hover:border-brand-gold transition">
+          <svg class="w-6 h-6" viewBox="0 0 40 40" fill="none">
+            <path d="M14 10V30M14 20L26 10M20 16L30 30" stroke="#E5007D" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle cx="30" cy="12" r="3" fill="#D4AF37"></circle>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-extrabold tracking-tight text-brand-dark leading-none">Kinder<span class="text-brand-fuchsia">Cripto</span></span>
+          <span class="text-[9px] font-semibold text-brand-muted tracking-[0.16em] uppercase mt-1">Por Elsa Maneiro</span>
+        </div>
+      </a>
+
+      <!-- Navegación Desktop -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-700">
+        <a href="#inicio" class="hover:text-brand-fuchsia transition py-1">Inicio</a>
+        <a href="#campanas" class="hover:text-brand-fuchsia transition py-1 relative">
+          Campañas
+          <span class="absolute -top-1.5 -right-3 px-1.5 py-0.2 bg-brand-fuchsia-light text-brand-fuchsia text-[10px] font-bold rounded-full border border-brand-fuchsia/20">Hub</span>
+        </a>
+        <a href="#como-funciona" class="hover:text-brand-fuchsia transition py-1">Cómo funciona</a>
+        <a href="#sobre-elsa" class="hover:text-brand-fuchsia transition py-1">Sobre Elsa</a>
+        <a href="#mentoria" class="hover:text-brand-fuchsia transition py-1">Mentoría</a>
+        <a href="#faq" class="hover:text-brand-fuchsia transition py-1">Preguntas</a>
+      </nav>
+
+      <!-- Botón Destacado Header -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a href="https://wa.me/34600000000?text=Hola%20Elsa,%20encontr%C3%A9%20KinderCripto%20y%20me%20gustar%C3%ADa%20recibir%20orientaci%C3%B3n%20sobre%20las%20campa%C3%B1as%20disponibles." target="_blank" class="relative group inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-brand-fuchsia text-white text-sm font-bold shadow-glow-fuchsia hover:bg-brand-fuchsia-dark hover:shadow-lg transition-all duration-300">
+          <span class="absolute -top-1 -right-1 w-3 h-3 bg-brand-gold rounded-full ring-2 ring-white animate-pulse"></span>
+          <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.772.822 2.791.822 3.183 0 5.769-2.587 5.769-5.767.001-3.181-2.585-5.767-5.769-5.767zm0 10.428c-.887 0-1.637-.253-2.348-.68l-.168-.1-1.745.457.466-1.7-.11-.176c-.47-.747-.723-1.579-.723-2.463 0-2.568 2.09-4.657 4.658-4.657 2.569 0 4.659 2.089 4.659 4.658 0 2.569-2.09 4.661-4.632 4.661z"></path></svg>
+          <span class="">Hablar con Elsa</span>
+          <span class="text-brand-gold-light font-extrabold text-xs ml-0.5">✦</span>
+        </a>
+      </div>
+
+      <!-- Hamburguesa móvil -->
+      <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl text-gray-700 hover:bg-gray-100 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+      </button>
+    </div>
+
+    <!-- Menú desplegable Móvil -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-brand-border px-6 py-4 space-y-3">
+      <a href="#inicio" class="block text-sm font-semibold text-gray-700 hover:text-brand-fuchsia">Inicio</a>
+      <a href="#campanas" class="block text-sm font-semibold text-gray-700 hover:text-brand-fuchsia">Campañas Activas</a>
+      <a href="#como-funciona" class="block text-sm font-semibold text-gray-700 hover:text-brand-fuchsia">Cómo funciona</a>
+      <a href="#sobre-elsa" class="block text-sm font-semibold text-gray-700 hover:text-brand-fuchsia">Sobre Elsa</a>
+      <a href="#mentoria" class="block text-sm font-semibold text-gray-700 hover:text-brand-fuchsia">Mentoría</a>
+      <a href="#faq" class="block text-sm font-semibold text-gray-700 hover:text-brand-fuchsia">Preguntas Frecuentes</a>
+      <div class="pt-2">
+        <a href="https://wa.me/34600000000?text=Hola%20Elsa,%20encontr%C3%A9%20KinderCripto" target="_blank" class="w-full text-center inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-brand-fuchsia text-white text-sm font-bold shadow-glow-fuchsia">
+          Hablar con Elsa <span class="text-brand-gold">✦</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ==========================================
+       SECCIÓN 2: HERO PRINCIPAL
+       ========================================== -->
+  <section id="inicio" class="relative overflow-hidden pt-8 pb-16 lg:pt-16 lg:pb-24 bg-gradient-to-b from-[#FFF5F9] via-[#FAF9FC] to-[#FAF9FC]">
+    <!-- Ambient glow decorative blobs -->
+    <div class="absolute top-10 left-1/4 w-96 h-96 bg-brand-fuchsia/10 rounded-full blur-3xl pointer-events-none -z-0"></div>
+    <div class="absolute top-32 right-10 w-96 h-96 bg-brand-gold/15 rounded-full blur-3xl pointer-events-none -z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Columna Izquierda: Copy & CTAs -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Badge Superior -->
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-brand-fuchsia/20 shadow-sm badge-shimmer">
+            <span class="text-xs">✨</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-dark">TU PRIMER PASO EN EL MUNDO CRIPTO</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
+          </div>
+
+          <!-- Headline Principal -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-dark tracking-tight leading-[1.12]">
+            Descubre <span class="gradient-text-hero">oportunidades cripto</span>. Aprende a aprovecharlas.
+          </h1>
+
+          <!-- Subtítulo -->
+          <p class="text-lg sm:text-xl text-brand-muted leading-relaxed max-w-2xl font-normal">
+            Explora campañas de exchanges, conoce sus recompensas y aprende paso a paso con <strong class="text-brand-dark font-semibold">Elsa Maneiro</strong>, tu mentora cripto para principiantes.
+          </p>
+
+          <!-- Botones de Acción -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a href="#campanas" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-brand-fuchsia text-white font-bold text-base shadow-glow-fuchsia hover:bg-brand-fuchsia-dark hover:scale-[1.02] active:scale-[0.98] transition-all">
+              <span class="">Explorar campañas</span>
+              <svg class="w-5 h-5 text-brand-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+            <a href="https://wa.me/34600000000?text=Hola%20Elsa,%20quiero%20hablar%20contigo%20acerca%20de%20KinderCripto." target="_blank" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white border-2 border-brand-border text-brand-dark font-bold text-base hover:border-brand-fuchsia/40 hover:bg-brand-fuchsia-light/50 transition-all">
+              <span class="">Quiero hablar con Elsa</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            </a>
+          </div>
+
+          <!-- Indicadores de Valor (3 Bullets) -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-brand-border/80">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-brand-fuchsia/10 text-brand-fuchsia flex items-center justify-center font-bold text-sm shrink-0">
+                ✓
+              </div>
+              <div>
+                <p class="text-sm font-bold text-brand-dark">Paso a paso</p>
+                <p class="text-xs text-brand-muted">Explicaciones claras y sin tecnicismos.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center font-bold text-sm shrink-0">
+                ✦
+              </div>
+              <div>
+                <p class="text-sm font-bold text-brand-dark">Multiexchange</p>
+                <p class="text-xs text-brand-muted">Binance, MEXC, Bitget y más en un solo lugar.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-brand-fuchsia/10 text-brand-fuchsia flex items-center justify-center font-bold text-sm shrink-0">
+                ♥
+              </div>
+              <div>
+                <p class="text-sm font-bold text-brand-dark">Acompañamiento</p>
+                <p class="text-xs text-brand-muted">Orientación humana y personalizada.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Columna Derecha: Imagen de Elsa + Tarjetas Flotantes -->
+        <div class="lg:col-span-5 relative flex justify-center"><div class="relative w-full max-w-md flex flex-col items-center"><div class="absolute inset-0 bg-gradient-to-tr from-brand-fuchsia/30 via-brand-gold/20 to-brand-fuchsia/20 rounded-full blur-2xl transform scale-95 pointer-events-none"></div><div class="relative p-2 rounded-full bg-gradient-to-tr from-brand-fuchsia via-brand-gold to-brand-fuchsia shadow-2xl shadow-glow-fuchsia"><div class="relative rounded-full overflow-hidden w-72 h-72 sm:w-80 sm:h-80 border-4 border-white shadow-inner bg-brand-dark flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzBj50KRVNzNy9vkLljfv01fqzsgx-OAwaMh13HDmpAgfu4dSbtk8z8wVNWeGKf_x3tY35qFuweESlR9a6mY6NpSjMPpwipLF-xAZvJdawnVh7Rj1pF55Ct_Dn2MvaGda8VSrAU83ViXh922ro9OpvRg7pDy4FxhST3FBvYYJMVW3RFI3DKmFAm8Mn0OdfMqOKFxwoMH3HyGyZchrKRH3Zbm6jrxcYOWbf_XjJ0b5hXA_RqbMJDYT8WLIjwzpAosiC5w" alt="Elsa Maneiro - Mentora KinderCripto" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"></div><div class="absolute -bottom-3 inset-x-0 flex justify-center"><div class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-brand-dark/90 backdrop-blur-md border border-brand-gold/40 text-white shadow-lg"><span class="w-2 h-2 rounded-full bg-brand-fuchsia animate-pulse"></span><span class="text-xs font-extrabold tracking-wide">Elsa Maneiro</span><span class="text-brand-gold text-[10px] font-semibold uppercase tracking-wider">✦ Mentora</span></div></div></div><div class="absolute -top-4 -right-2 sm:-right-4 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-brand-gold/40 shadow-card-hover flex items-center gap-2.5 floating-card-anim z-10"><div class="w-8 h-8 rounded-xl bg-brand-gold/20 text-brand-gold flex items-center justify-center text-base">✨</div><div><p class="text-xs font-bold text-brand-dark">Campañas Verificadas</p><p class="text-[10px] text-brand-muted">Linktree Oficial</p></div></div><div class="absolute -bottom-4 -left-2 sm:-left-4 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-brand-fuchsia/30 shadow-card-hover flex items-center gap-2.5 floating-card-anim-delayed z-10"><div class="w-8 h-8 rounded-xl bg-brand-fuchsia/15 text-brand-fuchsia flex items-center justify-center text-base">🚀</div><div><p class="text-xs font-bold text-brand-dark">Más de 100$ GRATIS</p><p class="text-[10px] text-brand-muted">Paso a paso con Elsa</p></div></div></div></div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       SECCIÓN 3: EXPLORADOR DE CAMPAÑAS (Hub Central)
+       ========================================== -->
+  <section id="campanas" class="py-20 bg-white border-y border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Encabezado de la Sección -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-fuchsia-light text-brand-fuchsia text-xs font-bold mb-3 border border-brand-fuchsia/15">
+          <span class="">CATÁLOGO VERIFICADO</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-dark tracking-tight">
+          Explora las campañas disponibles
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-brand-muted leading-relaxed">
+          Encuentra promociones de diferentes exchanges, revisa sus requisitos y descubre cuáles se adaptan a tu nivel y disponibilidad.
+        </p>
+      </div>
+
+      <!-- Barra de Búsqueda y Filtros Superiores -->
+      <div class="bg-[#FAF9FC] p-6 rounded-3xl border border-brand-border shadow-sm mb-10 space-y-5">
+        
+        <!-- Buscador Input -->
+        <div class="relative">
+          <input type="text" id="campaignSearch" placeholder="Buscar campaña o exchange (ej. MEXC, Binance, Trading, Bienvenida)..." class="w-full pl-12 pr-4 py-3.5 bg-white rounded-2xl border border-brand-border text-sm text-brand-dark placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-fuchsia/30 focus:border-brand-fuchsia transition shadow-inner">
+          <svg class="w-5 h-5 text-gray-400 absolute left-4 top-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+
+        <!-- Filtros Primarios: Exchanges (Pills horizontales) -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="exchangeFilters">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider shrink-0 mr-1">Exchange:</span>
+          <button data-filter="all" class="filter-exchange-btn active px-4 py-2 rounded-xl text-xs font-bold bg-brand-dark text-white shadow-sm transition">Todas</button>
+          <button data-filter="mexc" class="filter-exchange-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-gray-700 border border-brand-border hover:border-brand-fuchsia transition">MEXC</button>
+          <button data-filter="binance" class="filter-exchange-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-gray-700 border border-brand-border hover:border-brand-fuchsia transition">Binance</button>
+          <button data-filter="bitget" class="filter-exchange-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-gray-700 border border-brand-border hover:border-brand-fuchsia transition">Bitget</button>
+          <button data-filter="bybit" class="filter-exchange-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-gray-700 border border-brand-border hover:border-brand-fuchsia transition">Bybit</button>
+          <button data-filter="okx" class="filter-exchange-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-gray-700 border border-brand-border hover:border-brand-fuchsia transition">OKX</button>
+        </div>
+
+        <!-- Filtros Secundarios: Tipo, Nivel, Requisitos, Estado -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 border-t border-brand-border/60">
+          
+          <div>
+            <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Tipo de campaña</label>
+            <select id="typeFilter" class="w-full text-xs font-medium bg-white rounded-xl border border-brand-border px-3 py-2 text-brand-dark focus:border-brand-fuchsia focus:outline-none">
+              <option value="all">Todas las categorías</option>
+              <option value="bienvenida">Bienvenida</option>
+              <option value="referidos">Referidos</option>
+              <option value="trading">Trading</option>
+              <option value="depositos">Depósitos</option>
+              <option value="recompensas">Otras recompensas</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Nivel</label>
+            <select id="levelFilter" class="w-full text-xs font-medium bg-white rounded-xl border border-brand-border px-3 py-2 text-brand-dark focus:border-brand-fuchsia focus:outline-none">
+              <option value="all">Todos los niveles</option>
+              <option value="principiante">Principiante (Fácil)</option>
+              <option value="intermedio">Intermedio</option>
+              <option value="avanzado">Avanzado</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Requisito</label>
+            <select id="reqFilter" class="w-full text-xs font-medium bg-white rounded-xl border border-brand-border px-3 py-2 text-brand-dark focus:border-brand-fuchsia focus:outline-none">
+              <option value="all">Cualquier requisito</option>
+              <option value="sin-deposito">Sin depósito requerido</option>
+              <option value="con-deposito">Requiere depósito</option>
+              <option value="trading">Requiere trading</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">Estado</label>
+            <select id="statusFilter" class="w-full text-xs font-medium bg-white rounded-xl border border-brand-border px-3 py-2 text-brand-dark focus:border-brand-fuchsia focus:outline-none">
+              <option value="all">Todos los estados</option>
+              <option value="activa">Activas ahora</option>
+              <option value="proximamente">Próximamente</option>
+              <option value="finalizada">Finalizadas</option>
+            </select>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Contador de resultados -->
+      <div class="flex items-center justify-between mb-6 px-1">
+        <p class="text-xs font-semibold text-brand-muted">Mostrando <span id="campaignCount" class="text-brand-dark font-bold">7</span> campañas activas y auditadas</p>
+        <span class="text-[11px] font-medium text-brand-gold bg-brand-gold/10 px-2.5 py-1 rounded-full border border-brand-gold/20">★ Verificadas por Elsa</span>
+      </div>
+
+      <!-- GRID DE TARJETAS DE CAMPAÑAS (Responsive: 3 cols desktop, 2 cols tablet, 1 col mobile) -->
+      <div id="campaignsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- CAMPAÑA 1: Promo Más de 100$ GRATIS --><div class="campaign-card bg-white rounded-[20px] border-2 border-brand-fuchsia/30 p-6 shadow-card-hover hover:border-brand-fuchsia transition-all duration-300 flex flex-col justify-between relative" data-exchange="mexc" data-type="bienvenida" data-level="principiante" data-req="sin-deposito" data-status="activa" data-title="Promo MEXC: Ganar Más De 100$ GRATIS" data-desc="Guía completa y tutorial de Elsa paso a paso para nuevos registros: cómo reclamar tu bono de bienvenida y recompensas exclusivas sin complicaciones." data-benefit="Bono de bienvenida + Airdrop verificado (+100$)" data-deadline="Campaña Activa"><div><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-2.5"><div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center font-black text-blue-700 text-xs">MEXC</div><div><span class="text-xs font-bold text-brand-dark block">MEXC Global</span><span class="text-[10px] text-brand-muted">Promo Exclusiva Elsa</span></div></div><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-brand-fuchsia text-white shadow-sm"><span class="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse"></span> Destacada</span></div><h3 class="text-lg font-extrabold text-brand-dark group-hover:text-brand-fuchsia transition mb-2">Promo MEXC: Ganar Más De 100$ GRATIS</h3><p class="text-xs text-brand-muted leading-relaxed mb-4">El tutorial paso a paso creado por Elsa para nuevos registros: aprende a reclamar airdrops y bonos oficiales sin letra pequeña.</p><div class="space-y-2.5 pt-3 border-t border-brand-border/70 text-xs mb-6"><div class="flex items-start gap-2 bg-brand-gold-subtle p-2.5 rounded-xl border border-brand-gold/25"><span class="text-brand-gold font-bold">🎁</span><div><span class="text-[10px] font-bold uppercase text-gray-500 block">Recompensa Linktree</span><span class="font-bold text-brand-dark text-xs">Bono + Airdrop Verificado (+100$)</span></div></div><div class="flex items-center justify-between text-xs text-gray-600 px-1"><span class="">Nivel: <strong class="text-emerald-700 font-bold">Principiante</strong></span><span class="">Requisito: <strong class="text-brand-dark">Nuevo Usuario</strong></span></div><div class="flex items-center justify-between text-[11px] text-gray-400 px-1"><span class="">Estado: <strong class="text-emerald-600">100% Activa</strong></span><span class="text-brand-fuchsia font-semibold">Exclusiva Comunidad</span></div></div></div><div class="grid grid-cols-2 gap-2 pt-2"><button onclick="openCampaignModal('mexc-100-gratis')" class="w-full py-2.5 px-3 rounded-xl bg-brand-fuchsia text-white font-bold text-xs hover:bg-brand-fuchsia-dark transition flex items-center justify-center gap-1 shadow-sm"><span class="">Ver detalles</span><span class="">→</span></button><a href="https://wa.me/34600000000?text=Hola%20Elsa,%20quiero%20el%20paso%20a%20paso%20para%20ganar%20m%C3%A1s%20de%20100$%20GRATIS%20en%20MEXC." target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-white border border-brand-border text-brand-dark font-bold text-xs hover:border-brand-fuchsia hover:text-brand-fuchsia transition text-center flex items-center justify-center">Consultar con Elsa</a></div></div><!-- CAMPAÑA 2: Mega Cash Reward 7.0 (TradFi) --><div class="campaign-card bg-white rounded-[20px] border border-brand-border p-6 shadow-card-soft hover:shadow-card-hover hover:border-brand-fuchsia/40 transition-all duration-300 flex flex-col justify-between" data-exchange="mexc" data-type="trading" data-level="intermedio" data-req="trading" data-status="activa" data-title="Mega Cash Reward 7.0 Now Live (TradFi)" data-desc="Participa en la edición 7.0 de Mega Cash Reward para operar pares TradFi en MEXC y acceder a recompensas en efectivo de mayor escala." data-benefit="Higher Cash Rewards &amp; Earnings en USDT" data-deadline="31 Mar 2026"><div><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-2.5"><div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center font-black text-blue-700 text-xs">MEXC</div><div><span class="text-xs font-bold text-brand-dark block">MEXC Global</span><span class="text-[10px] text-brand-muted">Edición 7.0 Oficial</span></div></div><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Activa</span></div><h3 class="text-lg font-extrabold text-brand-dark group-hover:text-brand-fuchsia transition mb-2">Mega Cash Reward 7.0 (TradFi)</h3><p class="text-xs text-brand-muted leading-relaxed mb-4">Nueva edición del evento TradFi con recompensas en efectivo aumentadas para usuarios activos en trading sintético.</p><div class="space-y-2.5 pt-3 border-t border-brand-border/70 text-xs mb-6"><div class="flex items-start gap-2 bg-brand-gold-subtle p-2.5 rounded-xl border border-brand-gold/25"><span class="text-brand-gold font-bold">🎁</span><div><span class="text-[10px] font-bold uppercase text-gray-500 block">Recompensa Linktree</span><span class="font-bold text-brand-dark text-xs">Higher Cash Rewards &amp; Earnings</span></div></div><div class="flex items-center justify-between text-xs text-gray-600 px-1"><span class="">Nivel: <strong class="text-brand-dark">Intermedio</strong></span><span class="">Requisito: <strong class="text-brand-dark">Trading TradFi</strong></span></div><div class="flex items-center justify-between text-[11px] text-gray-400 px-1"><span class="">Finaliza: <strong>31 Mar 2026</strong></span><span class="text-brand-fuchsia font-semibold">Pool Activo</span></div></div></div><div class="grid grid-cols-2 gap-2 pt-2"><button onclick="openCampaignModal('mexc-tradfi')" class="w-full py-2.5 px-3 rounded-xl bg-brand-fuchsia text-white font-bold text-xs hover:bg-brand-fuchsia-dark transition flex items-center justify-center gap-1 shadow-sm"><span class="">Ver detalles</span><span class="">→</span></button><a href="https://wa.me/34600000000?text=Hola%20Elsa,%20tengo%20dudas%20sobre%20Mega%20Cash%20Reward%207.0%20TradFi." target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-white border border-brand-border text-brand-dark font-bold text-xs hover:border-brand-fuchsia hover:text-brand-fuchsia transition text-center flex items-center justify-center">Consultar con Elsa</a></div></div><!-- CAMPAÑA 3: Deposita USD y Gana Hasta 520 USDT --><div class="campaign-card bg-white rounded-[20px] border border-brand-border p-6 shadow-card-soft hover:shadow-card-hover hover:border-brand-fuchsia/40 transition-all duration-300 flex flex-col justify-between" data-exchange="mexc" data-type="depositos" data-level="principiante" data-req="con-deposito" data-status="activa" data-title="Deposita USD y Gana Hasta 520 USDT" data-desc="Evento especial de depósito fiat/USD en MEXC: 20 USDT Airdrop garantizado en tu primer depósito + bonificaciones acumulables hasta 500 USDT." data-benefit="20 USDT Airdrop primer depósito + hasta 500 USDT" data-deadline="Cupos mensuales"><div><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-2.5"><div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center font-black text-blue-700 text-xs">MEXC</div><div><span class="text-xs font-bold text-brand-dark block">MEXC Global</span><span class="text-[10px] text-brand-muted">Evento Depósito Fiat</span></div></div><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Activa</span></div><h3 class="text-lg font-extrabold text-brand-dark group-hover:text-brand-fuchsia transition mb-2">Deposita USD y Gana Hasta 520 USDT</h3><p class="text-xs text-brand-muted leading-relaxed mb-4">Realiza tu primer ingreso en USD y desbloquea 20 USDT directos de airdrop con escalado hasta 500 USDT según tu volumen.</p><div class="space-y-2.5 pt-3 border-t border-brand-border/70 text-xs mb-6"><div class="flex items-start gap-2 bg-brand-gold-subtle p-2.5 rounded-xl border border-brand-gold/25"><span class="text-brand-gold font-bold">🎁</span><div><span class="text-[10px] font-bold uppercase text-gray-500 block">Recompensa Linktree</span><span class="font-bold text-brand-dark text-xs">20 USDT Airdrop + hasta 500 USDT</span></div></div><div class="flex items-center justify-between text-xs text-gray-600 px-1"><span class="">Nivel: <strong class="text-emerald-700 font-bold">Principiante</strong></span><span class="">Requisito: <strong class="text-brand-dark">Depósito inicial USD</strong></span></div><div class="flex items-center justify-between text-[11px] text-gray-400 px-1"><span class="">Disponibilidad: <strong>Cupos limitados</strong></span><span class="text-emerald-600 font-semibold">Airdrop directo</span></div></div></div><div class="grid grid-cols-2 gap-2 pt-2"><button onclick="openCampaignModal('mexc-deposit-520')" class="w-full py-2.5 px-3 rounded-xl bg-brand-fuchsia text-white font-bold text-xs hover:bg-brand-fuchsia-dark transition flex items-center justify-center gap-1 shadow-sm"><span class="">Ver detalles</span><span class="">→</span></button><a href="https://wa.me/34600000000?text=Hola%20Elsa,%20quiero%20participar%20en%20Deposita%20USD%20y%20Gana%20Hasta%20520%20USDT." target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-white border border-brand-border text-brand-dark font-bold text-xs hover:border-brand-fuchsia hover:text-brand-fuchsia transition text-center flex items-center justify-center">Consultar con Elsa</a></div></div><!-- CAMPAÑA 4: VVIP Futures Loss Protection --><div class="campaign-card bg-white rounded-[20px] border border-brand-border p-6 shadow-card-soft hover:shadow-card-hover hover:border-brand-fuchsia/40 transition-all duration-300 flex flex-col justify-between" data-exchange="mexc" data-type="trading" data-level="avanzado" data-req="trading" data-status="activa" data-title="MEXC VVIP Futures Loss Protection" data-desc="Protección escalonada contra pérdidas en contratos de futuros MEXC diseñada para proteger el balance de traders participantes." data-benefit="Tiered Loss Rebates (Reembolso de pérdidas)" data-deadline="Vigente"><div><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-2.5"><div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center font-black text-blue-700 text-xs">MEXC</div><div><span class="text-xs font-bold text-brand-dark block">MEXC VVIP</span><span class="text-[10px] text-brand-muted">Protección de Capital</span></div></div><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-purple-50 text-purple-700 border border-purple-200"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Exclusiva</span></div><h3 class="text-lg font-extrabold text-brand-dark group-hover:text-brand-fuchsia transition mb-2">VVIP Futures Loss Protection</h3><p class="text-xs text-brand-muted leading-relaxed mb-4">Cobertura de reembolso estructurada por niveles (tiered rebates) ante pérdidas operativas en mercados de futuros.</p><div class="space-y-2.5 pt-3 border-t border-brand-border/70 text-xs mb-6"><div class="flex items-start gap-2 bg-brand-gold-subtle p-2.5 rounded-xl border border-brand-gold/25"><span class="text-brand-gold font-bold">🎁</span><div><span class="text-[10px] font-bold uppercase text-gray-500 block">Recompensa Linktree</span><span class="font-bold text-brand-dark text-xs">Tiered Loss Rebates (Reembolsos)</span></div></div><div class="flex items-center justify-between text-xs text-gray-600 px-1"><span class="">Nivel: <strong class="text-orange-600 font-bold">Avanzado</strong></span><span class="">Requisito: <strong class="text-brand-dark">Operar Futuros</strong></span></div><div class="flex items-center justify-between text-[11px] text-gray-400 px-1"><span class="">Estado: <strong>Activo</strong></span><span class="text-purple-700 font-semibold">VVIP Protection</span></div></div></div><div class="grid grid-cols-2 gap-2 pt-2"><button onclick="openCampaignModal('mexc-loss-protection')" class="w-full py-2.5 px-3 rounded-xl bg-brand-fuchsia text-white font-bold text-xs hover:bg-brand-fuchsia-dark transition flex items-center justify-center gap-1 shadow-sm"><span class="">Ver detalles</span><span class="">→</span></button><a href="https://wa.me/34600000000?text=Hola%20Elsa,%20cu%C3%A9ntame%20m%C3%A1s%20sobre%20el%20Loss%20Protection%20VVIP." target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-white border border-brand-border text-brand-dark font-bold text-xs hover:border-brand-fuchsia hover:text-brand-fuchsia transition text-center flex items-center justify-center">Consultar con Elsa</a></div></div><!-- CAMPAÑA 5: Evento Futures M-Day --><div class="campaign-card bg-white rounded-[20px] border border-brand-border p-6 shadow-card-soft hover:shadow-card-hover hover:border-brand-fuchsia/40 transition-all duration-300 flex flex-col justify-between" data-exchange="mexc" data-type="recompensas" data-level="intermedio" data-req="trading" data-status="activa" data-title="Evento Futures M-Day" data-desc="Participa en la ronda periódica de M-Day de Futuros MEXC: gana un bono de bienvenida de 20$ y boletos para los sorteos diarios." data-benefit="$20 Welcome Bonus + Lucky Draws" data-deadline="Rondas Periódicas"><div><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-2.5"><div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center font-black text-blue-700 text-xs">MEXC</div><div><span class="text-xs font-bold text-brand-dark block">MEXC M-Day</span><span class="text-[10px] text-brand-muted">Sorteos &amp; Bonos</span></div></div><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Activa</span></div><h3 class="text-lg font-extrabold text-brand-dark group-hover:text-brand-fuchsia transition mb-2">Evento Futures M-Day</h3><p class="text-xs text-brand-muted leading-relaxed mb-4">Ronda oficial M-Day donde obtienes boletos de la suerte según tu actividad y un bono de 20$ para operar.</p><div class="space-y-2.5 pt-3 border-t border-brand-border/70 text-xs mb-6"><div class="flex items-start gap-2 bg-brand-gold-subtle p-2.5 rounded-xl border border-brand-gold/25"><span class="text-brand-gold font-bold">🎁</span><div><span class="text-[10px] font-bold uppercase text-gray-500 block">Recompensa Linktree</span><span class="font-bold text-brand-dark text-xs">$20 Welcome Bonus + Lucky Draws</span></div></div><div class="flex items-center justify-between text-xs text-gray-600 px-1"><span class="">Nivel: <strong class="text-brand-dark">Intermedio</strong></span><span class="">Requisito: <strong class="text-brand-dark">Volumen M-Day</strong></span></div><div class="flex items-center justify-between text-[11px] text-gray-400 px-1"><span class="">Frecuencia: <strong>Semanal</strong></span><span class="text-emerald-600 font-semibold">Tickets Gratuitos</span></div></div></div><div class="grid grid-cols-2 gap-2 pt-2"><button onclick="openCampaignModal('mexc-mday')" class="w-full py-2.5 px-3 rounded-xl bg-brand-fuchsia text-white font-bold text-xs hover:bg-brand-fuchsia-dark transition flex items-center justify-center gap-1 shadow-sm"><span class="">Ver detalles</span><span class="">→</span></button><a href="https://wa.me/34600000000?text=Hola%20Elsa,%20quiero%20participar%20en%20el%20Futures%20M-Day%20de%20MEXC." target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-white border border-brand-border text-brand-dark font-bold text-xs hover:border-brand-fuchsia hover:text-brand-fuchsia transition text-center flex items-center justify-center">Consultar con Elsa</a></div></div><!-- CAMPAÑA 6: Earn Plus Debut Fest 800% APR --><div class="campaign-card bg-white rounded-[20px] border border-brand-border p-6 shadow-card-soft hover:shadow-card-hover hover:border-brand-fuchsia/40 transition-all duration-300 flex flex-col justify-between" data-exchange="mexc" data-type="recompensas" data-level="principiante" data-req="con-deposito" data-status="activa" data-title="Earn Plus Debut Fest 800% APR" data-desc="Festival debut de Earn Plus en MEXC con rendimiento temporal de hasta 800% APR promocional para staking de activos estables." data-benefit="Top-tier Staking returns USDT (hasta 800% APR)" data-deadline="Temporada Especial"><div><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-2.5"><div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center font-black text-blue-700 text-xs">MEXC</div><div><span class="text-xs font-bold text-brand-dark block">MEXC Earn Plus</span><span class="text-[10px] text-brand-muted">Rendimiento Promocional</span></div></div><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> 800% APR</span></div><h3 class="text-lg font-extrabold text-brand-dark group-hover:text-brand-fuchsia transition mb-2">Earn Plus Debut Fest 800% APR</h3><p class="text-xs text-brand-muted leading-relaxed mb-4">Pon tus fondos a generar rendimiento pasivo en plazos flexibles con el APR promocional de lanzamiento oficial.</p><div class="space-y-2.5 pt-3 border-t border-brand-border/70 text-xs mb-6"><div class="flex items-start gap-2 bg-brand-gold-subtle p-2.5 rounded-xl border border-brand-gold/25"><span class="text-brand-gold font-bold">🎁</span><div><span class="text-[10px] font-bold uppercase text-gray-500 block">Recompensa Linktree</span><span class="font-bold text-brand-dark text-xs">Top-tier Staking returns USDT</span></div></div><div class="flex items-center justify-between text-xs text-gray-600 px-1"><span class="">Nivel: <strong class="text-emerald-700 font-bold">Principiante</strong></span><span class="">Requisito: <strong class="text-brand-dark">Staking USDT</strong></span></div><div class="flex items-center justify-between text-[11px] text-gray-400 px-1"><span class="">Plazo: <strong>Flexible</strong></span><span class="text-amber-600 font-semibold">Cupos limitados</span></div></div></div><div class="grid grid-cols-2 gap-2 pt-2"><button onclick="openCampaignModal('mexc-earn-plus')" class="w-full py-2.5 px-3 rounded-xl bg-brand-fuchsia text-white font-bold text-xs hover:bg-brand-fuchsia-dark transition flex items-center justify-center gap-1 shadow-sm"><span class="">Ver detalles</span><span class="">→</span></button><a href="https://wa.me/34600000000?text=Hola%20Elsa,%20me%20interesa%20el%20Earn%20Plus%20Fest%20800%%20APR." target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-white border border-brand-border text-brand-dark font-bold text-xs hover:border-brand-fuchsia hover:text-brand-fuchsia transition text-center flex items-center justify-center">Consultar con Elsa</a></div></div><!-- CAMPAÑA 7: Evento October Outreach Captain --><div class="campaign-card bg-white rounded-[20px] border border-brand-border p-6 shadow-card-soft hover:shadow-card-hover hover:border-brand-fuchsia/40 transition-all duration-300 flex flex-col justify-between" data-exchange="mexc" data-type="referidos" data-level="intermedio" data-req="sin-deposito" data-status="activa" data-title="Evento October Outreach Captain" data-desc="Concurso oficial Outreach Captain con bolsa de 10,000 USDT en premios y multiplicadores de 1.5x por recomendación comunitaria." data-benefit="10,000 USDT prize pool + 1.5x boosts" data-deadline="Edición Outreach"><div><div class="flex items-center justify-between mb-4"><div class="flex items-center gap-2.5"><div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center font-black text-blue-700 text-xs">MEXC</div><div><span class="text-xs font-bold text-brand-dark block">MEXC Captains</span><span class="text-[10px] text-brand-muted">Comunidad &amp; Embajadores</span></div></div><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Activa</span></div><h3 class="text-lg font-extrabold text-brand-dark group-hover:text-brand-fuchsia transition mb-2">Evento October Outreach Captain</h3><p class="text-xs text-brand-muted leading-relaxed mb-4">Comparte tu experiencia e invita nuevos integrantes al ecosistema para clasificar en el reparto del pozo de 10.000 USDT.</p><div class="space-y-2.5 pt-3 border-t border-brand-border/70 text-xs mb-6"><div class="flex items-start gap-2 bg-brand-gold-subtle p-2.5 rounded-xl border border-brand-gold/25"><span class="text-brand-gold font-bold">🎁</span><div><span class="text-[10px] font-bold uppercase text-gray-500 block">Recompensa Linktree</span><span class="font-bold text-brand-dark text-xs">10,000 USDT prize pool + 1.5x boosts</span></div></div><div class="flex items-center justify-between text-xs text-gray-600 px-1"><span class="">Nivel: <strong class="text-brand-dark">Intermedio</strong></span><span class="">Requisito: <strong class="text-brand-dark">Comunidad / Sin depósito</strong></span></div><div class="flex items-center justify-between text-[11px] text-gray-400 px-1"><span class="">Premio total: <strong>10,000 USDT</strong></span><span class="text-brand-fuchsia font-semibold">1.5x Multiplicador</span></div></div></div><div class="grid grid-cols-2 gap-2 pt-2"><button onclick="openCampaignModal('mexc-outreach')" class="w-full py-2.5 px-3 rounded-xl bg-brand-fuchsia text-white font-bold text-xs hover:bg-brand-fuchsia-dark transition flex items-center justify-center gap-1 shadow-sm"><span class="">Ver detalles</span><span class="">→</span></button><a href="https://wa.me/34600000000?text=Hola%20Elsa,%20quiero%20informaci%C3%B3n%20sobre%20el%20evento%20Outreach%20Captain." target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-white border border-brand-border text-brand-dark font-bold text-xs hover:border-brand-fuchsia hover:text-brand-fuchsia transition text-center flex items-center justify-center">Consultar con Elsa</a></div></div></div>
+
+      <!-- Estado Vacío cuando no coinciden filtros -->
+      <div id="noCampaignsState" class="hidden text-center py-16 px-4 bg-[#FAF9FC] rounded-3xl border border-dashed border-gray-300">
+        <div class="w-16 h-16 rounded-full bg-brand-fuchsia-light text-brand-fuchsia flex items-center justify-center mx-auto text-2xl mb-4">
+          🔍
+        </div>
+        <h4 class="text-lg font-bold text-brand-dark">No se encontraron campañas con esos filtros</h4>
+        <p class="text-sm text-brand-muted mt-1 max-w-md mx-auto">Prueba a restablecer la búsqueda o escribir directamente a Elsa para consultar campañas fuera de catálogo.</p>
+        <button id="resetFiltersBtn" class="mt-4 px-6 py-2.5 bg-brand-fuchsia text-white rounded-full text-xs font-bold shadow-sm hover:bg-brand-fuchsia-dark transition">
+          Restablecer todos los filtros
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       SECCIÓN 4: MODAL DE DETALLE DE CAMPAÑA
+       (Overlay con blur, centrado, responsive, accesible)
+       ========================================== -->
+  <div id="campaignModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modalCampaignTitle">
+    
+    <!-- Backdrop oscuro con desenfoque suave -->
+    <div id="modalBackdrop" class="fixed inset-0 bg-brand-dark/75 backdrop-blur-md transition-opacity"></div>
+
+    <!-- Contenedor del Modal -->
+    <div class="relative bg-white w-full max-w-3xl rounded-[24px] sm:rounded-[28px] border border-brand-gold/30 shadow-modal overflow-hidden z-10 flex flex-col max-h-[92vh] my-auto">
+      
+      <!-- HEADER DEL MODAL -->
+      <div class="px-6 py-5 bg-gradient-to-r from-[#FFF5F9] via-white to-[#FFFDF5] border-b border-brand-border flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-3">
+          <div id="modalExchangeBadge" class="w-11 h-11 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center font-black text-blue-700 text-sm shadow-sm">
+            MEXC
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span id="modalExchangeName" class="text-xs font-bold text-brand-dark uppercase tracking-wider">MEXC Global</span>
+              <span id="modalStatusBadge" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Activa</span>
+            </div>
+            <h3 id="modalCampaignTitle" class="text-lg sm:text-xl font-extrabold text-brand-dark">
+              Mega Cash Reward — TradFi
+            </h3>
+          </div>
+        </div>
+
+        <!-- Botón cerrar (Escape y Click) -->
+        <button id="closeModalBtn" aria-label="Cerrar modal" class="w-9 h-9 rounded-full bg-gray-100 hover:bg-brand-fuchsia/10 text-gray-500 hover:text-brand-fuchsia flex items-center justify-center transition focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <!-- CUERPO CON SCROLL INTERNO -->
+      <div class="p-6 sm:p-8 overflow-y-auto modal-scroll space-y-6 text-sm text-gray-700">
+        
+        <!-- RESUMEN: ¿De qué trata esta campaña? -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-brand-fuchsia mb-2 flex items-center gap-1.5">
+            <span class="">ℹ️</span> ¿De qué trata esta campaña?
+          </h4>
+          <p id="modalSummaryDesc" class="text-brand-dark text-sm sm:text-base leading-relaxed bg-[#FAF9FC] p-4 rounded-2xl border border-brand-border">
+            Esta campaña promocional de MEXC permite a los participantes explorar productos de trading TradFi cumpliendo metas graduales de volumen. Diseñada para usuarios que ya comprenden las órdenes de mercado y quieren validar bonificaciones oficiales bajo condiciones específicas.
+          </p>
+        </div>
+
+        <!-- BENEFICIO: ¿Qué recompensa puedes obtener? (Fondo dorado suave) -->
+        <div class="bg-gradient-to-r from-[#FFFDF5] to-[#FFF9E6] p-5 rounded-2xl border border-brand-gold/40 shadow-sm">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-xl bg-brand-gold text-brand-dark flex items-center justify-center text-lg font-bold shrink-0 shadow-sm">
+              🏆
+            </div>
+            <div class="space-y-1">
+              <h4 class="text-xs font-extrabold text-brand-dark uppercase tracking-wider">
+                ¿Qué recompensa puedes obtener?
+              </h4>
+              <p id="modalBenefitDetail" class="text-sm font-bold text-brand-dark">
+                Recompensas promocionales acreditadas en cuenta según volumen y liquidez verificado.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-2 text-[11px]">
+                <span class="px-2 py-0.5 rounded bg-white/80 border border-brand-gold/30 text-amber-900 font-semibold">✔ Bono oficial del exchange</span>
+                <span class="px-2 py-0.5 rounded bg-white/80 border border-brand-gold/30 text-amber-900 font-semibold">✔ Recompensa diferenciada de trading</span>
+                <span class="px-2 py-0.5 rounded bg-white/80 border border-brand-gold/30 text-amber-900 font-semibold">✔ Verificación requerida</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- REQUISITOS: Lista de condiciones para participar -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-brand-dark mb-3 flex items-center gap-1.5">
+            <span class="">📋</span> Condiciones y requisitos para participar
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="modalReqList">
+            <div class="flex items-center gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-200">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span class="text-xs"><strong>Elegibilidad:</strong> Países habilitados por MEXC</span>
+            </div>
+            <div class="flex items-center gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-200">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span class="text-xs"><strong>Identidad:</strong> Verificación KYC básica aprobada</span>
+            </div>
+            <div class="flex items-center gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-200">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span class="text-xs"><strong>Tipo de usuario:</strong> Nuevos registros y existentes calificados</span>
+            </div>
+            <div class="flex items-center gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-200">
+              <span class="text-emerald-600 font-bold">✓</span>
+              <span class="text-xs"><strong>Condición operativa:</strong> Consultar volumen mínimo en bases</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASO A PASO: Línea de progreso vertical -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-brand-dark mb-3 flex items-center gap-1.5">
+            <span class="">🪜</span> Paso a paso guiado
+          </h4>
+          <div class="space-y-3 relative before:absolute before:left-3.5 before:top-3 before:bottom-3 before:w-0.5 before:bg-brand-border">
+            
+            <div class="relative flex items-start gap-4">
+              <div class="w-7 h-7 rounded-full bg-brand-fuchsia text-white flex items-center justify-center text-xs font-extrabold shrink-0 z-10 shadow-sm">
+                1
+              </div>
+              <div class="pt-0.5">
+                <p class="text-xs font-bold text-brand-dark">Revisa los requisitos de la campaña</p>
+                <p class="text-xs text-brand-muted">Asegúrate de que tu país y tu tipo de cuenta cumplen con las bases publicadas por el exchange.</p>
+              </div>
+            </div>
+
+            <div class="relative flex items-start gap-4">
+              <div class="w-7 h-7 rounded-full bg-brand-fuchsia text-white flex items-center justify-center text-xs font-extrabold shrink-0 z-10 shadow-sm">
+                2
+              </div>
+              <div class="pt-0.5">
+                <p class="text-xs font-bold text-brand-dark">Comprueba si cumples las condiciones</p>
+                <p class="text-xs text-brand-muted">Si tienes dudas sobre si requieres depositar o verificar tu identidad, consulta antes con Elsa.</p>
+              </div>
+            </div>
+
+            <div class="relative flex items-start gap-4">
+              <div class="w-7 h-7 rounded-full bg-brand-fuchsia text-white flex items-center justify-center text-xs font-extrabold shrink-0 z-10 shadow-sm">
+                3
+              </div>
+              <div class="pt-0.5">
+                <p class="text-xs font-bold text-brand-dark">Regístrate mediante el enlace oficial</p>
+                <p class="text-xs text-brand-muted">Accede directamente al portal oficial para asegurar la activación correcta de la promoción.</p>
+              </div>
+            </div>
+
+            <div class="relative flex items-start gap-4">
+              <div class="w-7 h-7 rounded-full bg-brand-fuchsia text-white flex items-center justify-center text-xs font-extrabold shrink-0 z-10 shadow-sm">
+                4
+              </div>
+              <div class="pt-0.5">
+                <p class="text-xs font-bold text-brand-dark">Completa las tareas requeridas</p>
+                <p class="text-xs text-brand-muted">Sigue las instrucciones exactas del panel de promociones dentro del exchange.</p>
+              </div>
+            </div>
+
+            <div class="relative flex items-start gap-4">
+              <div class="w-7 h-7 rounded-full bg-brand-gold text-brand-dark flex items-center justify-center text-xs font-extrabold shrink-0 z-10 shadow-sm">
+                5
+              </div>
+              <div class="pt-0.5">
+                <p class="text-xs font-bold text-brand-dark">Verifica el estado de tu recompensa</p>
+                <p class="text-xs text-brand-muted">Monitorea la sección "Centro de Recompensas" o tu saldo promocional asignado.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ACOMPAÑAMIENTO CON ELSA: Bloque visual destacado -->
+        <div class="bg-gradient-to-r from-brand-fuchsia-light via-white to-brand-gold-subtle p-5 rounded-2xl border border-brand-fuchsia/20 flex flex-col sm:flex-row items-center gap-4">
+          <div class="relative w-16 h-16 rounded-full overflow-hidden border-2 border-brand-fuchsia shadow-sm shrink-0">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzBj50KRVNzNy9vkLljfv01fqzsgx-OAwaMh13HDmpAgfu4dSbtk8z8wVNWeGKf_x3tY35qFuweESlR9a6mY6NpSjMPpwipLF-xAZvJdawnVh7Rj1pF55Ct_Dn2MvaGda8VSrAU83ViXh922ro9OpvRg7pDy4FxhST3FBvYYJMVW3RFI3DKmFAm8Mn0OdfMqOKFxwoMH3HyGyZchrKRH3Zbm6jrxcYOWbf_XjJ0b5hXA_RqbMJDYT8WLIjwzpAosiC5w" alt="Elsa Maneiro" class="w-full h-full object-cover object-top">
+          </div>
+          <div class="text-center sm:text-left flex-1">
+            <h5 class="text-sm font-extrabold text-brand-dark">¿Necesitas ayuda para completar esta campaña?</h5>
+            <p class="text-xs text-brand-muted mt-0.5">Elsa puede orientarte para comprender los requisitos y acompañarte durante el proceso paso a paso.</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+            <a id="modalWhatsAppDynamicBtn" href="#" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition">
+              <span class="">WhatsApp con Elsa</span>
+            </a>
+            <a href="#mentoria" onclick="closeCampaignModalDirect()" class="px-4 py-2 bg-white border border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white rounded-xl text-xs font-bold text-center transition">
+              Agendar llamada
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FOOTER DEL MODAL -->
+      <div class="px-6 py-4 bg-gray-50 border-t border-brand-border flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+        <p class="text-[11px] text-gray-500 leading-tight max-w-md text-center sm:text-left">
+          ⚠️ <em>Las recompensas están sujetas a las condiciones del exchange. Participar no garantiza recibir premios. Algunas actividades implican riesgos financieros.</em>
+        </p>
+        <div class="flex items-center gap-2.5 w-full sm:w-auto justify-end">
+          <a id="modalConsultElsaBtn" href="#" target="_blank" class="px-4 py-2.5 rounded-xl bg-white border border-brand-border text-brand-dark text-xs font-bold hover:border-brand-fuchsia hover:text-brand-fuchsia transition text-center">
+            Consultar con Elsa
+          </a>
+          <a id="modalOfficialCampaignLink" href="https://mexc.com" target="_blank" class="px-5 py-2.5 rounded-xl bg-brand-fuchsia hover:bg-brand-fuchsia-dark text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+            <span class="">Ir a la campaña oficial</span>
+            <span class="">↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ==========================================
+       SECCIÓN 5: CÓMO FUNCIONA KINDERCRIPTO
+       ========================================== -->
+  <section id="como-funciona" class="py-20 bg-[#FAF9FC] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/15 text-brand-dark text-xs font-bold mb-3 border border-brand-gold/30">
+          <span class="text-brand-gold">★</span> METODOLOGÍA TRANSPARENTE
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-dark tracking-tight">
+          Tu camino cripto, paso a paso
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-brand-muted leading-relaxed">
+          No necesitas saberlo todo para comenzar. Lo verdaderamente importante es entender cada paso antes de interactuar con cualquier plataforma.
+        </p>
+      </div>
+
+      <!-- 4 Pasos conectados -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+        
+        <!-- Línea conectora desktop -->
+        <div class="hidden lg:block absolute top-1/2 left-12 right-12 h-0.5 bg-gradient-to-r from-brand-fuchsia/40 via-brand-gold to-brand-fuchsia/40 -translate-y-12 z-0"></div>
+
+        <!-- PASO 01 -->
+        <div class="relative bg-white rounded-3xl p-6 border border-brand-border shadow-card-soft hover:shadow-card-hover transition-all z-10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-brand-fuchsia/10 text-brand-fuchsia flex items-center justify-center font-black text-xl">
+                01
+              </div>
+              <span class="text-xs font-bold text-brand-gold uppercase tracking-wider">Inicio</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-brand-dark mb-2">Explora</h3>
+            <p class="text-xs text-brand-muted leading-relaxed">
+              Encuentra campañas activas disponibles en diferentes exchanges centralizados, todas catalogadas y organizadas en un único lugar.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-brand-border/60 flex items-center gap-2 text-xs font-semibold text-brand-fuchsia">
+            <span class="">Filtros interactivos</span> <span class="">→</span>
+          </div>
+        </div>
+
+        <!-- PASO 02 -->
+        <div class="relative bg-white rounded-3xl p-6 border border-brand-border shadow-card-soft hover:shadow-card-hover transition-all z-10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-brand-gold/15 text-brand-gold flex items-center justify-center font-black text-xl">
+                02
+              </div>
+              <span class="text-xs font-bold text-brand-gold uppercase tracking-wider">Criterio</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-brand-dark mb-2">Descubre</h3>
+            <p class="text-xs text-brand-muted leading-relaxed">
+              Conoce los requisitos reales, beneficios específicos, fechas límite y condiciones de elegibilidad antes de comprometer tiempo o fondos.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-brand-border/60 flex items-center gap-2 text-xs font-semibold text-brand-gold">
+            <span class="">Fichas transparentes</span> <span class="">→</span>
+          </div>
+        </div>
+
+        <!-- PASO 03 -->
+        <div class="relative bg-white rounded-3xl p-6 border-2 border-brand-fuchsia/30 shadow-card-hover transition-all z-10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-brand-fuchsia text-white flex items-center justify-center font-black text-xl shadow-glow-fuchsia">
+                03
+              </div>
+              <span class="text-xs font-bold text-brand-fuchsia uppercase tracking-wider">Acompañamiento</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-brand-dark mb-2">Aprende con Elsa</h3>
+            <p class="text-xs text-brand-muted leading-relaxed">
+              Recibe orientación cercana para comprender cómo funciona el proceso, resolver dudas y evitar errores comunes de principiantes.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-brand-border/60 flex items-center gap-2 text-xs font-semibold text-brand-fuchsia">
+            <span class="">WhatsApp &amp; Mentoría</span> <span class="">★</span>
+          </div>
+        </div>
+
+        <!-- PASO 04 -->
+        <div class="relative bg-white rounded-3xl p-6 border border-brand-border shadow-card-soft hover:shadow-card-hover transition-all z-10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-brand-dark text-brand-gold-light flex items-center justify-center font-black text-xl">
+                04
+              </div>
+              <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Ejecución</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-brand-dark mb-2">Participa</h3>
+            <p class="text-xs text-brand-muted leading-relaxed">
+              Completa las tareas correspondientes de forma autónoma y consulta con tranquilidad el estado de tus recompensas en el exchange oficial.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-brand-border/60 flex items-center gap-2 text-xs font-semibold text-gray-700">
+            <span class="">Campaña oficial</span> <span class="">✓</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       SECCIÓN 6: SOBRE ELSA MANEIRO (Editorial)
+       ========================================== -->
+  <section id="sobre-elsa" class="py-20 bg-white border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Columna Izquierda: Retrato Editorial -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          <div class="relative w-full max-w-md">
+            
+            <!-- Marco con línea dorada sutil -->
+            <div class="absolute -top-3 -left-3 w-full h-full rounded-[30px] border-2 border-brand-gold/40 pointer-events-none"></div>
+            
+            <div class="relative rounded-[28px] overflow-hidden bg-brand-dark shadow-xl">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzBj50KRVNzNy9vkLljfv01fqzsgx-OAwaMh13HDmpAgfu4dSbtk8z8wVNWeGKf_x3tY35qFuweESlR9a6mY6NpSjMPpwipLF-xAZvJdawnVh7Rj1pF55Ct_Dn2MvaGda8VSrAU83ViXh922ro9OpvRg7pDy4FxhST3FBvYYJMVW3RFI3DKmFAm8Mn0OdfMqOKFxwoMH3HyGyZchrKRH3Zbm6jrxcYOWbf_XjJ0b5hXA_RqbMJDYT8WLIjwzpAosiC5w" alt="Elsa Maneiro - Mentora Cripto" class="w-full h-auto object-cover object-top max-h-[500px]">
+              
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-60"></div>
+              
+              <div class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-white/40 shadow-sm">
+                <p class="text-xs font-bold text-brand-dark">"El mundo cripto no tiene por qué ser abrumador."</p>
+                <p class="text-[11px] text-brand-muted mt-0.5">— Elsa Maneiro, Mentora Cripto</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Historia & Propósito -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-fuchsia-light text-brand-fuchsia text-xs font-bold border border-brand-fuchsia/20">
+            <span class="">★</span> TU MENTORA CRIPTO
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-dark tracking-tight">
+            Hola, soy Elsa Maneiro.
+          </h2>
+
+          <div class="space-y-4 text-base sm:text-lg text-brand-muted leading-relaxed font-normal">
+            <p class="">
+              Mi propósito es ayudarte a dar tus primeros pasos en el mundo cripto de forma sencilla, acompañada y con información clara.
+            </p>
+            <p class="">
+              En <strong class="text-brand-dark font-semibold">KinderCripto</strong> encontrarás campañas, recursos y orientación para aprender a utilizar plataformas de criptomonedas y comprender tanto las oportunidades como los riesgos de cada promoción.
+            </p>
+            <p class="text-sm text-gray-500 italic">
+              Sin tecnicismos innecesarios, sin falsas promesas de dinero rápido y con la cercanía humana que necesitas cuando estás comenzando.
+            </p>
+          </div>
+
+          <!-- Tres Valores Clave -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+            
+            <div class="p-4 rounded-2xl bg-[#FAF9FC] border border-brand-border">
+              <div class="w-8 h-8 rounded-lg bg-brand-fuchsia/10 text-brand-fuchsia flex items-center justify-center font-bold text-sm mb-2">
+                📖
+              </div>
+              <h4 class="text-sm font-bold text-brand-dark">Educación clara</h4>
+              <p class="text-xs text-brand-muted mt-1">Conceptos complejos explicados en lenguaje accesible para todos.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#FAF9FC] border border-brand-border">
+              <div class="w-8 h-8 rounded-lg bg-brand-gold/20 text-brand-gold flex items-center justify-center font-bold text-sm mb-2">
+                🤝
+              </div>
+              <h4 class="text-sm font-bold text-brand-dark">Acompañamiento</h4>
+              <p class="text-xs text-brand-muted mt-1">Cercanía y respuestas a tus dudas durante todo tu recorrido.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#FAF9FC] border border-brand-border">
+              <div class="w-8 h-8 rounded-lg bg-brand-fuchsia/10 text-brand-fuchsia flex items-center justify-center font-bold text-sm mb-2">
+                ⚖️
+              </div>
+              <h4 class="text-sm font-bold text-brand-dark">Transparencia</h4>
+              <p class="text-xs text-brand-muted mt-1">Cero humo: siempre diferenciando bonos, riesgos y condiciones reales.</p>
+            </div>
+
+          </div>
+
+          <div class="pt-2"><div class="flex flex-wrap items-center gap-3"><a href="https://t.me/kindercripto" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-fuchsia text-white font-bold text-xs hover:bg-brand-fuchsia-dark transition shadow-md"><span class="">Canal General Telegram</span><span class="">↗</span></a><a href="https://t.me/comunidadkindercripto" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#229ED9] text-white font-bold text-xs hover:opacity-90 transition shadow-md"><span class="">Comunidad Kinder Cripto</span><span class="">↗</span></a><a href="https://instagram.com/kindercripto" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-brand-border text-brand-dark font-bold text-xs hover:border-brand-fuchsia hover:text-brand-fuchsia transition"><span class="">Instagram @kindercripto</span><span class="">↗</span></a><a href="https://linktr.ee/kindercriptomexc" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-dark text-brand-gold-light font-bold text-xs hover:bg-brand-dark/80 transition"><span class="">Linktree Oficial</span><span class="">✦</span></a></div></div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       SECCIÓN 7: MENTORÍA PERSONALIZADA (Oscura Premium #111018)
+       ========================================== -->
+  <section id="mentoria" class="py-24 bg-brand-dark relative overflow-hidden text-white">
+    
+    <!-- Luces ambientales de fondo (fucsia y dorada) -->
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-brand-fuchsia/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-brand-gold/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-brand-gold-light text-xs font-bold mb-4 border border-brand-gold/30">
+        <span class="">✨</span> ASESORÍA INDIVIDUAL
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white max-w-2xl mx-auto">
+        ¿Prefieres que te acompañe paso a paso?
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-gray-300 max-w-xl mx-auto font-light leading-relaxed">
+        Agenda una sesión con Elsa y recibe orientación personalizada para comenzar a explorar el mundo cripto con total tranquilidad.
+      </p>
+
+      <!-- Tarjeta Central Premium -->
+      <div class="mt-12 bg-brand-dark-card border border-brand-gold/30 rounded-[32px] p-8 sm:p-12 shadow-2xl relative overflow-hidden max-w-2xl mx-auto">
+        
+        <!-- Borde sutil superior dorado -->
+        <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-brand-fuchsia via-brand-gold to-brand-fuchsia"></div>
+
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-gold to-brand-gold-light text-brand-dark flex items-center justify-center text-3xl mx-auto shadow-glow-gold mb-6">
+          📅
+        </div>
+
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
+          Agenda tu sesión con Elsa
+        </h3>
+        <p class="mt-3 text-sm text-gray-300 max-w-md mx-auto">
+          Elige el horario que mejor se adapte a ti. Resolveremos tus dudas en directo sobre plataformas, verificación de identidad y campañas vigentes.
+        </p>
+
+        <!-- Botones de Acción -->
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://calendly.com" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-brand-gold to-brand-gold-light text-brand-dark font-extrabold text-sm shadow-glow-gold hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition">
+            Agendar una llamada
+          </a>
+          <a href="https://wa.me/34600000000?text=Hola%20Elsa,%20quisiera%20agendar%20una%20sesi%C3%B3n%20de%20mentor%C3%ADa%20personalizada." target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-sm transition">
+            Escribir por WhatsApp
+          </a>
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400">
+          <span class="flex items-center gap-1.5"><span class="text-emerald-400">●</span> Integración con Calendly / Google Meet</span>
+          <span class="flex items-center gap-1.5"><span class="text-brand-gold">✦</span> Sesiones 1 a 1 en directo</span>
+          <span class="flex items-center gap-1.5"><span class="text-brand-fuchsia">♥</span> 100% enfocada en tus dudas</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       SECCIÓN 8: PREGUNTAS FRECUENTES (Acordeón)
+       ========================================== -->
+  <section id="faq" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-fuchsia-light text-brand-fuchsia text-xs font-bold mb-3 border border-brand-fuchsia/20">
+          <span class="">❓</span> DUDAS FRECUENTES
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight">
+          Preguntas frecuentes
+        </h2>
+        <p class="mt-3 text-base text-brand-muted">
+          Respuestas transparentes para que tomes decisiones con claridad y confianza.
+        </p>
+      </div>
+
+      <!-- Contenedor Acordeón -->
+      <div class="space-y-4" id="faqAccordion">
+
+        <!-- FAQ 1 -->
+        <div class="faq-item border border-brand-border rounded-2xl overflow-hidden bg-[#FAF9FC] transition">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between font-bold text-brand-dark hover:text-brand-fuchsia transition">
+            <span class="text-base sm:text-lg">¿Qué es KinderCripto?</span>
+            <span class="faq-icon text-brand-fuchsia text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-brand-muted leading-relaxed border-t border-brand-border/60 pt-3">
+            KinderCripto es una plataforma educativa y de mentoría personal creada por Elsa Maneiro. Su objetivo es ayudar a personas sin experiencia previa a comprender el mundo de las criptomonedas y aprovechar promociones y campañas oficiales de los principales exchanges con seguridad y comprensión.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item border border-brand-border rounded-2xl overflow-hidden bg-[#FAF9FC] transition">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between font-bold text-brand-dark hover:text-brand-fuchsia transition">
+            <span class="text-base sm:text-lg">¿Necesito experiencia previa para participar?</span>
+            <span class="faq-icon text-brand-fuchsia text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-brand-muted leading-relaxed border-t border-brand-border/60 pt-3">
+            No, en absoluto. Todo el contenido y las explicaciones de Elsa están diseñados específicamente desde cero para personas principiantes, evitando jerga técnica incomprensible y guiándote en cada paso del proceso.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item border border-brand-border rounded-2xl overflow-hidden bg-[#FAF9FC] transition">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between font-bold text-brand-dark hover:text-brand-fuchsia transition">
+            <span class="text-base sm:text-lg">¿Qué son las campañas de los exchanges?</span>
+            <span class="faq-icon text-brand-fuchsia text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-brand-muted leading-relaxed border-t border-brand-border/60 pt-3">
+            Son programas promocionales organizados directamente por plataformas como Binance, Bitget o MEXC para atraer nuevos usuarios o incentivar el uso de sus herramientas. Estas campañas pueden ofrecer bonos, descuentos en comisiones o recompensas por cumplir ciertas acciones.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item border border-brand-border rounded-2xl overflow-hidden bg-[#FAF9FC] transition">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between font-bold text-brand-dark hover:text-brand-fuchsia transition">
+            <span class="text-base sm:text-lg">¿Todas las campañas ofrecen dinero retirable?</span>
+            <span class="faq-icon text-brand-fuchsia text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-brand-muted leading-relaxed border-t border-brand-border/60 pt-3">
+            No. Existen distintos tipos de recompensas: bonos promocionales para trading, cupones de descuento para comisiones y, en algunos casos específicos, recompensas en tokens. En KinderCripto siempre especificamos la naturaleza exacta del beneficio para evitar confusiones.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item border border-brand-border rounded-2xl overflow-hidden bg-[#FAF9FC] transition">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between font-bold text-brand-dark hover:text-brand-fuchsia transition">
+            <span class="text-base sm:text-lg">¿Necesito depositar dinero obligatoriamente?</span>
+            <span class="faq-icon text-brand-fuchsia text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-brand-muted leading-relaxed border-t border-brand-border/60 pt-3">
+            Depende de la campaña. Existen campañas sin depósito (como programas de referidos o módulos educativos "Aprende y Gana") y otras que exigen un depósito o volumen mínimo de operaciones. Puedes usar nuestro filtro de requisitos para encontrar únicamente las que no exigen depósito.
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item border border-brand-border rounded-2xl overflow-hidden bg-[#FAF9FC] transition">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between font-bold text-brand-dark hover:text-brand-fuchsia transition">
+            <span class="text-base sm:text-lg">¿Cómo puedo recibir ayuda directa de Elsa?</span>
+            <span class="faq-icon text-brand-fuchsia text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-brand-muted leading-relaxed border-t border-brand-border/60 pt-3">
+            Puedes escribirle directamente a través del botón de WhatsApp en la esquina inferior de la web o agendar una llamada de mentoría individual en la sección de agendamiento.
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item border border-brand-border rounded-2xl overflow-hidden bg-[#FAF9FC] transition">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between font-bold text-brand-dark hover:text-brand-fuchsia transition">
+            <span class="text-base sm:text-lg">¿Las recompensas están garantizadas?</span>
+            <span class="faq-icon text-brand-fuchsia text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-brand-muted leading-relaxed border-t border-brand-border/60 pt-3">
+            No. Las recompensas dependen exclusivamente de los términos y condiciones del exchange emisor y de que el usuario cumpla los requisitos en tiempo y forma. KinderCripto es un facilitador educativo, no la entidad pagadora.
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-item border border-brand-border rounded-2xl overflow-hidden bg-[#FAF9FC] transition">
+          <button class="faq-trigger w-full px-6 py-4 text-left flex items-center justify-between font-bold text-brand-dark hover:text-brand-fuchsia transition">
+            <span class="text-base sm:text-lg">¿KinderCripto pertenece a Binance, Bitget o MEXC?</span>
+            <span class="faq-icon text-brand-fuchsia text-xl transition-transform duration-300">+</span>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 text-sm text-brand-muted leading-relaxed border-t border-brand-border/60 pt-3">
+            No. KinderCripto es una iniciativa educativa completamente independiente liderada por Elsa Maneiro. No somos propiedad de ningún exchange; actuamos como educadores y divulgadores independientes.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       SECCIÓN 9: CTA FINAL (Degradado Fucsia Intenso)
+       ========================================== -->
+  <section class="py-20 bg-gradient-to-br from-brand-fuchsia-dark via-brand-fuchsia to-[#9B0054] text-white relative overflow-hidden">
+    
+    <!-- Acentos dorados decorativos -->
+    <div class="absolute -top-10 -right-10 w-80 h-80 bg-brand-gold/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-10 -left-10 w-80 h-80 bg-brand-gold-light/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-brand-gold-light text-xs font-extrabold uppercase tracking-widest border border-white/20 mb-4">
+        ✦ DA EL SALTO CON SEGURIDAD
+      </span>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+        Tu próximo paso en cripto comienza aquí.
+      </h2>
+
+      <p class="mt-4 text-base sm:text-lg text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
+        Descubre campañas, aprende a participar y cuenta con la orientación cercana de Elsa Maneiro para avanzar con mayor confianza y tranquilidad.
+      </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#campanas" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-brand-fuchsia-dark font-extrabold text-sm shadow-xl hover:bg-brand-fuchsia-light transition">
+          Explorar campañas
+        </a>
+        <a href="https://wa.me/34600000000?text=Hola%20Elsa,%20quiero%20empezar%20mi%20camino%20en%20KinderCripto." target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-dark/40 hover:bg-brand-dark border border-white/30 text-white font-bold text-sm transition">
+          Hablar con Elsa
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       SECCIÓN 10: FOOTER (Elegante, Fondo Oscuro)
+       ========================================== -->
+  <footer class="bg-brand-dark text-gray-400 py-16 border-t border-white/10 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Marca y descripción -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-white/5 border border-brand-gold/40 flex items-center justify-center">
+              <svg class="w-6 h-6" viewBox="0 0 40 40" fill="none">
+                <path d="M14 10V30M14 20L26 10M20 16L30 30" stroke="#E5007D" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <circle cx="30" cy="12" r="3" fill="#D4AF37"></circle>
+              </svg>
+            </div>
+            <div>
+              <span class="text-xl font-extrabold text-white">Kinder<span class="text-brand-fuchsia">Cripto</span></span>
+              <span class="text-[9px] font-semibold text-gray-400 tracking-[0.16em] uppercase block">Por Elsa Maneiro</span>
+            </div>
+          </div>
+          <p class="text-gray-400 max-w-sm leading-relaxed text-xs">
+            Educación y acompañamiento cripto para principiantes. Descubre campañas oficiales de exchanges explicadas con cercanía, transparencia y rigor.
+          </p>
+          <div class="text-[11px] text-gray-500">
+            Dominio oficial: <strong class="text-gray-300">kindercripto.com</strong>
+          </div>
+        </div>
+
+        <!-- Enlaces Rápidos -->
+        <div class="md:col-span-3 space-y-2">
+          <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-3">Navegación</h4>
+          <ul class="space-y-2">
+            <li class=""><a href="#inicio" class="hover:text-white transition">Inicio</a></li>
+            <li class=""><a href="#campanas" class="hover:text-white transition">Explorador de Campañas</a></li>
+            <li class=""><a href="#como-funciona" class="hover:text-white transition">Cómo funciona</a></li>
+            <li class=""><a href="#sobre-elsa" class="hover:text-white transition">Sobre Elsa Maneiro</a></li>
+            <li class=""><a href="#mentoria" class="hover:text-white transition">Agendar mentoría</a></li>
+          </ul>
+        </div>
+
+        <!-- Canales y Legal -->
+        <div class="md:col-span-4 space-y-2"><h4 class="text-white text-xs font-bold uppercase tracking-wider mb-3">Comunidad &amp; Linktree Oficial</h4><ul class="space-y-2"><li class=""><a href="https://t.me/kindercripto" target="_blank" class="hover:text-brand-fuchsia transition flex items-center gap-1.5"><span class="">Canal General Kinder Cripto (Telegram)</span></a></li><li class=""><a href="https://t.me/comunidadkindercripto" target="_blank" class="hover:text-brand-fuchsia transition flex items-center gap-1.5"><span class="">Comunidad Kinder Cripto (Telegram)</span></a></li><li class=""><a href="https://instagram.com/kindercripto" target="_blank" class="hover:text-brand-fuchsia transition flex items-center gap-1.5"><span class="">Instagram (@kindercripto)</span></a></li><li class=""><a href="https://linktr.ee/kindercriptomexc" target="_blank" class="hover:text-brand-gold transition flex items-center gap-1.5"><span class="text-brand-gold">✦</span> <span class="">Linktree Oficial MEXC</span></a></li><li class=""><a href="https://wa.me/34600000000" target="_blank" class="hover:text-emerald-400 transition flex items-center gap-1.5"><span class="">WhatsApp oficial de Elsa</span></a></li><li class=""><a href="#" class="hover:text-white transition">Aviso legal sobre riesgos financieros</a></li></ul></div>
+
+      </div>
+
+      <!-- Copyright y Descargo de Responsabilidad -->
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-gray-500">
+        <p class="">© 2026 KinderCripto — Elsa Maneiro. Todos los derechos reservados.</p>
+        <p class="max-w-2xl text-[11px] leading-relaxed">
+          <strong>Aviso importante:</strong> KinderCripto es una plataforma educativa independiente. No garantiza recompensas ni resultados financieros. Las promociones pertenecen a sus respectivos organizadores y están sujetas a condiciones particulares de cada exchange.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ==========================================
+       SECCIÓN 11: BOTÓN FLOTANTE PERMANENTE DE WHATSAPP
+       ========================================== -->
+  <div class="fixed bottom-6 right-6 z-40 group">
+    <!-- Tooltip -->
+    <div class="absolute right-full bottom-1/2 translate-y-1/2 mr-3 px-3 py-1.5 rounded-xl bg-brand-dark text-white text-xs font-semibold shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
+      ¿Necesitas ayuda? Habla con Elsa
+      <div class="absolute top-1/2 -right-1 -translate-y-1/2 border-4 border-transparent border-l-brand-dark"></div>
+    </div>
+
+    <!-- Botón circular WhatsApp -->
+    <a href="https://wa.me/34600000000?text=Hola%20Elsa,%20encontr%C3%A9%20KinderCripto%20y%20me%20gustar%C3%ADa%20recibir%20orientaci%C3%B3n%20sobre%20las%20campa%C3%B1as%20disponibles." target="_blank" aria-label="Hablar con Elsa por WhatsApp" class="relative w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all duration-300">
+      <!-- Indicador visual de disponibilidad -->
+      <span class="absolute top-0 right-0 w-3.5 h-3.5 bg-brand-gold rounded-full ring-2 ring-white"></span>
+      
+      <svg class="w-8 h-8 fill-white" viewBox="0 0 24 24">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.54 1.772.822 2.791.822 3.183 0 5.769-2.587 5.769-5.767.001-3.181-2.585-5.767-5.769-5.767zm0 10.428c-.887 0-1.637-.253-2.348-.68l-.168-.1-1.745.457.466-1.7-.11-.176c-.47-.747-.723-1.579-.723-2.463 0-2.568 2.09-4.657 4.658-4.657 2.569 0 4.659 2.089 4.659 4.658 0 2.569-2.09 4.661-4.632 4.661z"></path>
+      </svg>
+    </a>
+  </div>
+
+
+  <!-- ==========================================
+       SCRIPTS: FILTROS INTERACTIVOS, MODAL Y ACORDEÓN
+       ========================================== -->
+  <script>
+    // --- 1. Base de datos de campañas para modal interactivo ---
+    const campaignsData = {
+      'mexc-tradfi': {
+        exchange: 'MEXC Global',
+        exchangeBadge: 'MEXC',
+        badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
+        title: 'Mega Cash Reward — TradFi',
+        status: 'Activa',
+        statusClass: 'bg-emerald-100 text-emerald-800',
+        summary: 'Descubre una campaña promocional de trading TradFi en MEXC y consulta las condiciones para participar con total claridad. La promoción recompensa la actividad operativa según los pares designados.',
+        benefit: 'Recompensas promocionales en bonos de trading acreditadas según cumplimiento estricto de volumen.',
+        reqs: [
+          'Usuarios nuevos y existentes calificados',
+          'Verificación de identidad (KYC) básica aprobada',
+          'Operaciones válidas en los pares TradFi especificados',
+          'Cumplir con el plazo estipulado antes del 31 de marzo de 2026'
+        ],
+        officialUrl: 'https://mexc.com'
+      },
+      'mexc-stocks': {
+        exchange: 'MEXC Global',
+        exchangeBadge: 'MEXC',
+        badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
+        title: 'Real Stocks — Referral',
+        status: 'Activa',
+        statusClass: 'bg-emerald-100 text-emerald-800',
+        summary: 'Conoce una campaña de referidos relacionada con productos vinculados a acciones sintéticas. Diseñada para aprender a compartir enlaces oficiales de recomendación sin riesgo operativo.',
+        benefit: 'Incentivos promocionales por referidos que completen verificación y registro formal.',
+        reqs: [
+          'No requiere depósito para compartir enlace de recomendación',
+          'Tanto anfitrión como invitado deben residir en países participantes',
+          'El invitado debe completar verificación KYC oficial',
+          'Campaña válida hasta el 15 de abril de 2026'
+        ],
+        officialUrl: 'https://mexc.com'
+      },
+      'binance-learn': {
+        exchange: 'Binance Academy',
+        exchangeBadge: 'BNB',
+        badgeBg: 'bg-amber-50 text-amber-700 border-amber-200',
+        title: 'Aprende y Gana: Módulos Web3',
+        status: 'Ilustrativa DEMO',
+        statusClass: 'bg-amber-100 text-amber-800',
+        summary: 'Campaña educativa oficial donde lees artículos breves sobre tecnología blockchain y resuelves cuestionarios interactivos de 5 preguntas.',
+        benefit: 'Cupones de criptomonedas promocionales directamente asignados a tu billetera de Binance.',
+        reqs: [
+          'Cuenta con verificación de identidad intermedia (KYC)',
+          'No requiere ningún depósito de capital',
+          'Completar el 100% de las respuestas correctas en el cuestionario',
+          'Asignación por orden de llegada hasta agotar inventario promocional'
+        ],
+        officialUrl: 'https://binance.com'
+      },
+      'bitget-welcome': {
+        exchange: 'Bitget Exchange',
+        exchangeBadge: 'BGB',
+        badgeBg: 'bg-cyan-50 text-cyan-700 border-cyan-200',
+        title: 'Bitget Welcome Booster',
+        status: 'Activa (Demo)',
+        statusClass: 'bg-emerald-100 text-emerald-800',
+        summary: 'Paquete de bienvenida para nuevos usuarios que abren cuenta por primera vez y desean protección en comisiones durante su aprendizaje.',
+        benefit: 'Cupones de deducción de tarifas de trading para conservar el 100% de tu saldo operativo.',
+        reqs: [
+          'Exclusivo para usuarios recién registrados',
+          'Completar verificación de identidad dentro de los primeros 7 días',
+          'Primer depósito de prueba según bases oficiales',
+          'Uso de cupones con vigencia de 30 días tras su reclamo'
+        ],
+        officialUrl: 'https://bitget.com'
+      },
+      'bybit-earn': {
+        exchange: 'Bybit Earn',
+        exchangeBadge: 'BYB',
+        badgeBg: 'bg-purple-50 text-purple-700 border-purple-200',
+        title: 'Bybit Launchpool & Earn',
+        status: 'Activa (Demo)',
+        statusClass: 'bg-emerald-100 text-emerald-800',
+        summary: 'Aprende cómo funciona el staking de activos estables en campañas promocionales con rendimiento anualizado durante periodos de prueba limitados.',
+        benefit: 'Rendimiento en activos estables garantizado según el tiempo de permanencia promocional.',
+        reqs: [
+          'Verificación de identidad aprobada',
+          'Depósito en saldo estable (ej. USDT)',
+          'Periodo de permanencia flexible sin penalización',
+          'Límite de participación por usuario estipulado en las bases'
+        ],
+        officialUrl: 'https://bybit.com'
+      },
+      'okx-quest': {
+        exchange: 'OKX Web3',
+        exchangeBadge: 'OKX',
+        badgeBg: 'bg-zinc-100 text-black border-zinc-300',
+        title: 'OKX Cryptopedia: DeFi Quest',
+        status: 'Próximamente',
+        statusClass: 'bg-indigo-100 text-indigo-800',
+        summary: 'Misiones on-chain mediante la billetera OKX Web3 para interactuar con aplicaciones descentralizadas en redes de prueba.',
+        benefit: 'Puntos de participación para eventuales recompensas descentralizadas y medallas coleccionables.',
+        reqs: [
+          'Billetera sin custodia instalada en dispositivo seguro',
+          'Comprensión básica de tarifas de red (gas fee)',
+          'Seguir la guía de Elsa para no firmar transacciones sospechosas',
+          'Fase en prelanzamiento informativo'
+        ],
+        officialUrl: 'https://okx.com'
+      }
+    };
+
+    // --- 2. Lógica del Modal ---
+    const modal = document.getElementById('campaignModal');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    function openCampaignModal(campaignId) {
+      const data = campaignsData[campaignId];
+      if (!data) return;
+
+      document.getElementById('modalExchangeBadge').textContent = data.exchangeBadge;
+      document.getElementById('modalExchangeName').textContent = data.exchange;
+      document.getElementById('modalStatusBadge').textContent = data.status;
+      document.getElementById('modalCampaignTitle').textContent = data.title;
+      document.getElementById('modalSummaryDesc').textContent = data.summary;
+      document.getElementById('modalBenefitDetail').textContent = data.benefit;
+
+      // Requisitos
+      const reqList = document.getElementById('modalReqList');
+      reqList.innerHTML = data.reqs.map(r => `
+        <div class="flex items-center gap-2.5 p-3 rounded-xl bg-gray-50 border border-gray-200">
+          <span class="text-emerald-600 font-bold">✓</span>
+          <span class="text-xs text-brand-dark">${r}</span>
+        </div>
+      `).join('');
+
+      // WhatsApp dinámico personalizado
+      const msg = encodeURIComponent(`Hola Elsa, estoy interesado/a en la campaña "${data.title}" de ${data.exchange}. ¿Podrías orientarme para entender los requisitos?`);
+      const waUrl = `https://wa.me/34600000000?text=${msg}`;
+      
+      document.getElementById('modalWhatsAppDynamicBtn').href = waUrl;
+      document.getElementById('modalConsultElsaBtn').href = waUrl;
+      document.getElementById('modalOfficialCampaignLink').href = data.officialUrl;
+
+      // Mostrar modal
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCampaignModalDirect() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    closeModalBtn.addEventListener('click', closeCampaignModalDirect);
+    modalBackdrop.addEventListener('click', closeCampaignModalDirect);
+    
+    // Cierre mediante teclado Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeCampaignModalDirect();
+      }
+    });
+
+    // --- 3. Filtros y Buscador Interactivo ---
+    const searchInput = document.getElementById('campaignSearch');
+    const exchangeBtns = document.querySelectorAll('.filter-exchange-btn');
+    const typeSelect = document.getElementById('typeFilter');
+    const levelSelect = document.getElementById('levelFilter');
+    const reqSelect = document.getElementById('reqFilter');
+    const statusSelect = document.getElementById('statusFilter');
+    const campaignCards = document.querySelectorAll('.campaign-card');
+    const campaignCount = document.getElementById('campaignCount');
+    const noCampaignsState = document.getElementById('noCampaignsState');
+    const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+
+    let activeExchange = 'all';
+
+    exchangeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        exchangeBtns.forEach(b => {
+          b.classList.remove('active', 'bg-brand-dark', 'text-white');
+          b.classList.add('bg-white', 'text-gray-700');
+        });
+        btn.classList.add('active', 'bg-brand-dark', 'text-white');
+        btn.classList.remove('bg-white', 'text-gray-700');
+        activeExchange = btn.getAttribute('data-filter');
+        filterCampaigns();
+      });
+    });
+
+    function filterCampaigns() {
+      const query = searchInput.value.toLowerCase().trim();
+      const type = typeSelect.value;
+      const level = levelSelect.value;
+      const req = reqSelect.value;
+      const status = statusSelect.value;
+
+      let visibleCount = 0;
+
+      campaignCards.forEach(card => {
+        const cExchange = card.getAttribute('data-exchange');
+        const cType = card.getAttribute('data-type');
+        const cLevel = card.getAttribute('data-level');
+        const cReq = card.getAttribute('data-req');
+        const cStatus = card.getAttribute('data-status');
+        const title = card.getAttribute('data-title').toLowerCase();
+        const desc = card.getAttribute('data-desc').toLowerCase();
+
+        const matchExchange = (activeExchange === 'all' || cExchange === activeExchange);
+        const matchType = (type === 'all' || cType === type);
+        const matchLevel = (level === 'all' || cLevel === level);
+        const matchReq = (req === 'all' || cReq === req);
+        const matchStatus = (status === 'all' || cStatus === status);
+        const matchSearch = (!query || title.includes(query) || desc.includes(query) || cExchange.includes(query));
+
+        if (matchExchange && matchType && matchLevel && matchReq && matchStatus && matchSearch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      campaignCount.textContent = visibleCount;
+      if (visibleCount === 0) {
+        noCampaignsState.classList.remove('hidden');
+      } else {
+        noCampaignsState.classList.add('hidden');
+      }
+    }
+
+    searchInput.addEventListener('input', filterCampaigns);
+    typeSelect.addEventListener('change', filterCampaigns);
+    levelSelect.addEventListener('change', filterCampaigns);
+    reqSelect.addEventListener('change', filterCampaigns);
+    statusSelect.addEventListener('change', filterCampaigns);
+
+    resetFiltersBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      typeSelect.value = 'all';
+      levelSelect.value = 'all';
+      reqSelect.value = 'all';
+      statusSelect.value = 'all';
+      exchangeBtns[0].click();
+    });
+
+    // --- 4. Acordeón FAQ ---
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const content = item.querySelector('.faq-content');
+        const icon = trigger.querySelector('.faq-icon');
+        const isClosed = content.classList.contains('hidden');
+
+        // Cerrar otros
+        document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+        document.querySelectorAll('.faq-icon').forEach(i => {
+          i.textContent = '+';
+          i.classList.remove('rotate-45');
+        });
+
+        if (isClosed) {
+          content.classList.remove('hidden');
+          icon.textContent = '✕';
+          icon.classList.add('rotate-45');
+        }
+      });
+    });
+
+    // --- 5. Mobile Menu Toggle ---
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+
+
+
+</body></html>

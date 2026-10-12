@@ -1,0 +1,91 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+.gradient-text-hero {
+  background: linear-gradient(135deg, #e5007d 15%, #f5d76e 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-border-gold {
+  border-image: linear-gradient(to right, #e5007d, #d4af37) 1;
+}
+.badge-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(229, 0, 125, 0.08) 0%,
+    rgba(212, 175, 55, 0.15) 50%,
+    rgba(229, 0, 125, 0.08) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 4s infinite linear;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.floating-card-anim {
+  animation: gentleFloat 5s ease-in-out infinite;
+}
+.floating-card-anim-delayed {
+  animation: gentleFloat 5.8s ease-in-out infinite 1.5s;
+}
+@keyframes gentleFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+/* Custom scrollbar for modal */
+.modal-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-scroll::-webkit-scrollbar-track {
+  background: #f4f4f6;
+  border-radius: 8px;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 8px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+body {
+  background: #faf9fc;
+  color: #111018;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+summary {
+  cursor: pointer;
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-icon {
+  transform: rotate(45deg);
+}
+:focus-visible {
+  outline: 3px solid #e5007d;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
