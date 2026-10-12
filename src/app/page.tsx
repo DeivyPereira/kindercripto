@@ -1,4 +1,5 @@
 import { Inicio } from "@/components/secciones/Inicio";
+import { GuiaRecompensas } from "@/components/secciones/GuiaRecompensas";
 import { ComoFunciona } from "@/components/secciones/ComoFunciona";
 import { SobreElsa } from "@/components/secciones/SobreElsa";
 import { Mentoria } from "@/components/secciones/Mentoria";
@@ -35,6 +36,7 @@ export default function PaginaInicio() {
         }}
       />
       <Inicio />
+      <GuiaRecompensas />
       <CatalogoCampanas />
       <ComoFunciona />
       <SobreElsa />

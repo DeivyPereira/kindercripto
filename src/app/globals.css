@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 
+.font-editorial {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-weight: 600;
+}
+
 .gradient-text-hero {
   background: linear-gradient(135deg, #e5007d 15%, #f5d76e 85%);
   -webkit-background-clip: text;

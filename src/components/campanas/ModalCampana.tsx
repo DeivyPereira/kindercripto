@@ -32,7 +32,7 @@ export function ModalCampana({
         if (e.target === e.currentTarget) cerrar();
       }}
       aria-labelledby="titulo-campana"
-      className="w-[calc(100%_-_2rem)] max-w-3xl max-h-[90vh] rounded-3xl p-0 shadow-modal backdrop:bg-brand-dark/75 backdrop:backdrop-blur-sm"
+      className="fixed inset-0 m-auto w-[calc(100%_-_2rem)] max-w-3xl max-h-[90dvh] overflow-y-auto rounded-3xl p-0 shadow-modal backdrop:bg-brand-dark/75 backdrop:backdrop-blur-sm"
     >
       <div className="p-6 sm:p-8 space-y-6">
         <div className="flex justify-between items-start gap-4">
