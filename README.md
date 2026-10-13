@@ -66,3 +66,7 @@ El remoto `origin` apunta a `https://github.com/DeivyPereira/kindercripto.git`. 
 ## Compatibilidad del Worker
 
 Next.js está fijado en `16.3.8`. Con Next.js `16.4.0` y OpenNext `1.20.10` se reprodujo una excepción al cargar `preview-props.json`, que produce HTTP 500 / error 1101 aunque la compilación termine bien. No amplíes el rango de Next.js sin ejecutar `npm run test:worker` después de `npm run build:worker`. Esta comprobación arranca el Worker local y verifica la página principal, robots, sitemap, imagen social y una imagen del catálogo con respuestas HTTP 200.
+
+## Imagen para compartir
+
+`public/og-image.png` es la imagen social de 1200 × 630 píxeles, con la marca, la fotografía de Elsa y textos en español. Open Graph y Twitter usan el mismo archivo estático para evitar ejecutar un generador de imágenes en el Worker. Puedes regenerarla con `npm run generate:og`.

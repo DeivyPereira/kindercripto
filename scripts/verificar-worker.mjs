@@ -30,7 +30,7 @@ try {
     ["/", "text/html", 'lang="es"'],
     ["/robots.txt", "text/plain", "Sitemap:"],
     ["/sitemap.xml", "xml", "<urlset"],
-    ["/opengraph-image", "image/png", null],
+    ["/og-image.png", "image/png", null],
     ["/campanas/mexc-100-gratis.png", "image/png", null],
   ]) {
     const respuesta = await fetch(`http://localhost:${puerto}${ruta}`, { signal: AbortSignal.timeout(20000) });

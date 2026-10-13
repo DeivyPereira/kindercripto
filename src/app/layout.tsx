@@ -29,9 +29,11 @@ export const metadata: Metadata = {
     siteName: configuracion.nombre,
     title: "KinderCripto | Aprende cripto con Elsa Maneiro",
     description: configuracion.descripcion,
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "KinderCripto — Aprende cripto con Elsa Maneiro" }],
   },
   twitter: {
     card: "summary_large_image",
+    images: [{ url: "/og-image.png", alt: "KinderCripto — Aprende cripto con Elsa Maneiro" }],
     title: "KinderCripto | Aprende cripto con Elsa Maneiro",
     description: configuracion.descripcion,
   },
